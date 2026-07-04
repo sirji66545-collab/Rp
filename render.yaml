@@ -1,9 +1,11 @@
 services:
   - type: web
     name: uptime-guardian
-    env: docker
+    env: python  # ← Docker ki jagah Python (IMPORTANT!)
     plan: free
     healthCheckPath: /health
+    buildCommand: pip install -r requirements.txt
+    startCommand: python guardian.py
     envVars:
       - key: BOT_TOKEN
         sync: false
